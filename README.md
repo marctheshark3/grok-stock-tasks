@@ -20,7 +20,7 @@ Run post-market on Wednesday. Provide a concise stock analysis in a DataFrame-st
 - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
 - **Investment Adjustments**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
 - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for events, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
+Use finance API for prices, web search for events, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
 
 ## Weekly Portfolio Review and Rebalancing Prompt
 Run on Friday post-market or Saturday. Provide a concise portfolio review in a DataFrame-style view with columns: Ticker, Closing Price, Weekly % Change, Risk. Include:
@@ -28,7 +28,7 @@ Run on Friday post-market or Saturday. Provide a concise portfolio review in a D
 - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
 - **Rebalancing Suggestions**: Reduce exposure, Increase exposure, New opportunity (outside list), Seasonality trend.
 - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for risk factors, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
+Use finance API for prices, web search for risk factors, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, and META.
 
 ## Weekly Sector and Macro Analysis Prompt
 Run on Sunday evening or Monday pre-market. Provide a concise analysis in a DataFrame-style view with columns: Ticker, Sector Impact, News. Include:
@@ -37,7 +37,7 @@ Run on Sunday evening or Monday pre-market. Provide a concise analysis in a Data
 - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
 - **Investment Opportunities**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
 - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use web search for macro and sector trends, X search for sentiment, finance API for stock data. Keep output concise, citing reliable sources. Add stocks with: "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
+Use web search for macro and sector trends, X search for sentiment, finance API for stock data. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
 
 ## End of Week Stock Analysis Prompt
 Run Friday post-market. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Closing Price, Weekly % Change, Event. Include:
@@ -45,7 +45,7 @@ Run Friday post-market. Provide a concise stock analysis in a DataFrame-style vi
 - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
 - **Investment Strategies**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
 - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for performance, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
+Use finance API for prices, web search for performance, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
 
 ## Weekly Pre-Market Stock Analysis Prompt
 Run Monday pre-market. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Pre-market Price, News, Analyst. Include:
@@ -54,7 +54,7 @@ Run Monday pre-market. Provide a concise stock analysis in a DataFrame-style vie
 - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
 - **Investment Strategies**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
 - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for news, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
+Use finance API for prices, web search for news, X search for sentiment. Keep output concise, citing reliable sources. NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
 
 ## Daily Pre-Market Stock Analysis Prompt
 Run daily pre-market. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Pre-market Price, News, Analyst. Include:
@@ -63,8 +63,7 @@ Run daily pre-market. Provide a concise stock analysis in a DataFrame-style view
 - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
 - **Investment Opportunities**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
 - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for news, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
-
+Use finance API for prices, web search for news, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
 ---
 
 These prompts ensure consistency across tasks, leveraging your preferred format and data points. Let me know if you’d like to test any specific prompt or adjust further!
