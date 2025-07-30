@@ -1,69 +1,41 @@
 # grok-stock-tasks
 
-Your stock market analysis alert system is designed to deliver actionable insights by monitoring market movements and integrating real-time data. Below are the prompts for each of your scheduled tasks, formatted in Markdown, incorporating the DataFrame-style view and the $1,000 scenario split into High Risk and Low Risk tables with Current Price, Number of Shares, Price Target, Estimated Profit, and Profit Percentage. These prompts are configurable—add or remove stocks by saying, "add these stocks to our analysis: <stock1>, <stock2>, ...<stockN>."
+## Daily Pre-Market Stock Analysis
 
----
+Market preview for {current_date}: overall sentiment (bullish/bearish via futures, pre-market, trends). Include 2/10 yield spread (from Treasury.gov) as recession indicator. Summarize overnight news/events (e.g., reports, Fed, geopolitics, earnings). For each watchlist stock (COIN, TSLA, NVDA, MSTR, SPOT, NFLX, META, PLTR, FBTC, MSFT, AMC, AAPL, AMD, GME, CRWD, INTC, SOFI, TEM, NOC, CRCL, BMNR, ADBE, CMND, ENPH), use markdown, bullets, concise pro language: Fundamentals Revenue growth, gross/net margins, FCF Valuations vs peers (P/E, EV/EBITDA) Insider ownership/trades Thesis Validation 3 supporting arguments 2 risks/counter-arguments Verdict: Bullish/Bearish/Neutral + justification Sector/Macro Sector overview Macro trends Competitive positioning Catalysts Upcoming events (earnings, launches, regs) Short/long-term catalysts Summary 5-bullet thesis Rec: Buy/Hold/Sell Confidence: High/Med/Low Timeframe (e.g., 6-12 mos) Back w/ data from Yahoo, CNBC, Bloomberg, X; cite prices/changes/yields. Scan other upside stocks w/ similar analysis. Suggest buy/sell (not advice). Select 5 option trades to max edge w/ constraints (delta [-0.3,+0.3]/$100k NAV, vega>=-0.05/$100k NAV, max 2/GICS). Filters: quote<=10min, POP>=0.65, credit/loss>=0.33, loss<=$500. Rank model_score; tie: momentum_z/flow_z. Table: | Ticker | Strategy | Legs | Thesis (<=30 words) | POP |. If <5: "Fewer than 5 trades meet criteria, do not execute."
 
-## ETF Mid-Week Analysis Prompt
-Run post-market on Wednesday. Provide a concise ETF-focused analysis in a DataFrame-style view with columns: Ticker, Closing Price, Week-to-Date % Change, Event, RSI (14-day), Volume Change, Analyst Target. Include:
-- **Mid-Week Market Snapshot**: Market trend (2-3 sentences), Key events remaining.
-- **2/10 Spread**: Value and context (high/low volatility impact).
-- **Investment Adjustments**: Short-term (1-3 months) and Long-term (6+ months) ETF strategies, Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for events, X search for sentiment. Keep output concise, citing reliable sources.
+## Closing Market Analysis
+Market summary for {current_date}: closing sentiment (bullish/bearish via S&P/Nasdaq/Dow). Update 2/10 yield spread. Cover daily news/events (e.g., releases, announcements, rotations). For each watchlist stock (COIN, TSLA, NVDA, MSTR, SPOT, NFLX, META, PLTR, FBTC, MSFT, AMC, AAPL, AMD, GME, CRWD, INTC, SOFI, TEM, NOC, CRCL, BMNR, ADBE, CMND, ENPH), use markdown, bullets, concise pro language: Fundamentals Revenue growth, gross/net margins, FCF Valuations vs peers (P/E, EV/EBITDA) Insider ownership/trades Thesis Validation 3 supporting arguments 2 risks/counter-arguments Verdict: Bullish/Bearish/Neutral + justification Sector/Macro Sector overview Macro trends Competitive positioning Catalysts Upcoming events (earnings, launches, regs) Short/long-term catalysts Summary 5-bullet thesis Rec: Buy/Hold/Sell Confidence: High/Med/Low Timeframe (e.g., 6-12 mos) Include closes, changes, volume, news/sentiment from X/media. ID emerging upside stocks. Data from Bloomberg, Investing.com. Buy/sell ideas for tomorrow. Select 5 option trades to max edge w/ constraints (delta [-0.3,+0.3]/$100k NAV, vega>=-0.05/$100k NAV, max 2/GICS). Filters: quote<=10min, POP>=0.65, credit/loss>=0.33, loss<=$500. Rank model_score; tie: momentum_z/flow_z. Table: | Ticker | Strategy | Legs | Thesis (<=30 words) | POP |. If <5: "Fewer than 5 trades meet criteria, do not execute."
 
-## Mid-Week Stock Analysis Prompt
-Run post-market on Wednesday. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Closing Price, Week-to-Date % Change, Event, RSI (14-day), Volume Change, Analyst Target. Include:
-- **Mid-Week Market Snapshot**: Market trend (2-3 sentences), Key events remaining.
-- **2/10 Spread**: Value and context (high/low volatility impact).
-- **Top Movers**: Top gainer, Top loser, Notable mover (outside list).
-- **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
-- **Investment Adjustments**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for events, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
+## Mid-Week Stock Analysis
 
-## Weekly Portfolio Review and Rebalancing Prompt
-Run on Friday post-market or Saturday. Provide a concise portfolio review in a DataFrame-style view with columns: Ticker, Closing Price, Weekly % Change, Risk. Include:
-- **Portfolio Performance**: Weekly gain/loss (overall %), Top performer, Bottom performer.
-- **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
-- **Rebalancing Suggestions**: Reduce exposure, Increase exposure, New opportunity (outside list), Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for risk factors, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, and META.
+Run post-market on Wednesday. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Closing Price, Week-to-Date % Change, Event, RSI (14-day), Volume Change, Analyst Target. Include: - **Mid-Week Market Snapshot**: Market trend (2-3 sentences), Key events remaining. - **2/10 Spread**: Value and context (high/low volatility impact). - **Top Movers**: Top gainer, Top loser, Notable mover (outside list). - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META, BMNR, ADBE. - **Investment Adjustments**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend. - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level. Use finance API for prices, web search for events, X search for sentiment. Keep output concise, citing reliable sources.
 
-## Weekly Sector and Macro Analysis Prompt
-Run on Sunday evening or Monday pre-market. Provide a concise analysis in a DataFrame-style view with columns: Ticker, Sector Impact, News. Include:
-- **Macroeconomic Overview**: Key indicators (2-3 sentences), Global events.
-- **Sector Trends**: Tech, EV, Fintech/Crypto, Energy, Consumer, Funds.
-- **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
-- **Investment Opportunities**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use web search for macro and sector trends, X search for sentiment, finance API for stock data. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
 
-## End of Week Stock Analysis Prompt
-Run Friday post-market. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Closing Price, Weekly % Change, Event. Include:
-- **Weekly Performance**: Market summary (2-3 sentences), Top 3 gainers, Top 3 losers.
-- **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
-- **Investment Strategies**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for performance, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
+## Weekly Pre-Market Stock Analysis
 
-## Weekly Pre-Market Stock Analysis Prompt
-Run Monday pre-market. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Pre-market Price, News, Analyst. Include:
-- **Market Outlook**: Weekly economic trends (2-3 sentences), Key events this week.
-- **Stock Predictions**: [Stock 1], [Stock 2], [Stock 3] (include one outside list).
-- **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
-- **Investment Strategies**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for news, X search for sentiment. Keep output concise, citing reliable sources. NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
+Weekly pre-market analysis for {current_date} (Mon): adjust sentiment (bullish/bearish) from weekend/Sun projections using pre-market data, futures. Update 2/10 yield spread as macro indicator. Review weekend events/dev (e.g., news, intl markets) + Mon pre-market impacts. Preview weekly events (e.g., earnings, data releases, FOMC). For each watchlist stock (COIN, TSLA, NVDA, MSTR, SPOT, NFLX, META, PLTR, FBTC, MSFT, AMC, AAPL, AMD, GME, CRWD, INTC, SOFI, TEM, NOC, CRCL, BMNR, ADBE, CMND, ENPH), use markdown, bullets, concise pro language: Fundamentals Revenue growth, gross/net margins, FCF Valuations vs peers (P/E, EV/EBITDA) Insider ownership/trades Thesis Validation 3 supporting arguments 2 risks/counter-arguments Verdict: Bullish/Bearish/Neutral + justification Sector/Macro Sector overview Macro trends Competitive positioning Catalysts Upcoming events (earnings, launches, regs) Short/long-term catalysts Summary 5-bullet thesis Rec: Buy/Hold/Sell Confidence: High/Med/Low Timeframe (e.g., 6-12 mos) Incorporate pre-market moves, catalysts, X sentiment. Rec other upside stocks. Back w/ data from Yahoo, CNBC, Bloomberg. Weekly strategies. Select 5 option trades to max edge w/ constraints (delta [-0.3,+0.3]/$100k NAV, vega>=-0.05/$100k NAV, max 2/GICS). Filters: quote<=10min, POP>=0.65, credit/loss>=0.33, loss<=$500. Rank model_score; tie: momentum_z/flow_z. Table: | Ticker | Strategy | Legs | Thesis (<=30 words) | POP |. If <5: "Fewer than 5 trades meet criteria, do not execute."
 
-## Daily Pre-Market Stock Analysis Prompt
-Run daily pre-market. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Pre-market Price, News, Analyst. Include:
-- **Market Sentiment**: Economic outlook (2-3 sentences), Key events today.
-- **Stock Predictions**: [Stock 1], [Stock 2], [Stock 3] (include one outside list).
-- **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META.
-- **Investment Opportunities**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend.
-- **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level.
-Use finance API for prices, web search for news, X search for sentiment. Keep output concise, citing reliable sources. Add stocks with: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, BMNR and META.
----
 
-These prompts ensure consistency across tasks, leveraging your preferred format and data points. Let me know if you’d like to test any specific prompt or adjust further!
+## Weekly Sector Macro Analysis
+
+Week-ahead analysis after {current_date} (Sun): projected sentiment (bullish/bearish) via futures, calendar (e.g., CPI, FOMC), weekend dev. Review 2/10 yield trend. Preview events (e.g., earnings, intl). For each watchlist stock (COIN, TSLA, NVDA, MSTR, SPOT, NFLX, META, PLTR, FBTC, MSFT, AMC, AAPL, AMD, GME, CRWD, INTC, SOFI, TEM, NOC, CRCL, BMNR, ADBE, CMND, ENPH), use markdown, bullets, concise pro language: Fundamentals Revenue growth, gross/net margins, FCF Valuations vs peers (P/E, EV/EBITDA) Insider ownership/trades Thesis Validation 3 supporting arguments 2 risks/counter-arguments Verdict: Bullish/Bearish/Neutral + justification Sector/Macro Sector overview Macro trends Competitive positioning Catalysts Upcoming events (earnings, launches, regs) Short/long-term catalysts Summary 5-bullet thesis Rec: Buy/Hold/Sell Confidence: High/Med/Low Timeframe (e.g., 6-12 mos) Assess setups, catalysts, X sentiment. Rec other upside stocks. Back w/ data from Zacks, Barron's. Week strategies. Select 5 option trades to max edge w/ constraints (delta [-0.3,+0.3]/$100k NAV, vega>=-0.05/$100k NAV, max 2/GICS). Filters: quote<=10min, POP>=0.65, credit/loss>=0.33, loss<=$500. Rank model_score; tie: momentum_z/flow_z. Table: | Ticker | Strategy | Legs | Thesis (<=30 words) | POP |. If <5: "Fewer than 5 trades meet criteria, do not execute."
+
+## Mid-Week Stock Analysis
+
+Run post-market on Wednesday. Provide a concise stock analysis in a DataFrame-style view with columns: Ticker, Closing Price, Week-to-Date % Change, Event, RSI (14-day), Volume Change, Analyst Target. Include: - **Mid-Week Market Snapshot**: Market trend (2-3 sentences), Key events remaining. - **2/10 Spread**: Value and context (high/low volatility impact). - **Top Movers**: Top gainer, Top loser, Notable mover (outside list). - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META, BMNR, ADBE. - **Investment Adjustments**: Short-term (1-3 months) and Long-term (6+ months) strategies, Seasonality trend. - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level. Use finance API for prices, web search for events, X search for sentiment. Keep output concise, citing reliable sources.
+
+## End of Weekly Stock Analysis
+
+End-of-week review ending {current_date} (Fri): weekly sentiment (bullish/bearish) via indices, sectors, breadth. Update 2/10 yield spread w/ changes. Recap weekly news (e.g., jobs, mergers, regs). For each watchlist stock (COIN, TSLA, NVDA, MSTR, SPOT, NFLX, META, PLTR, FBTC, MSFT, AMC, AAPL, AMD, GME, CRWD, INTC, SOFI, TEM, NOC, CRCL, BMNR, ADBE, CMND, ENPH), use markdown, bullets, concise pro language: Fundamentals Revenue growth, gross/net margins, FCF Valuations vs peers (P/E, EV/EBITDA) Insider ownership/trades Thesis Validation 3 supporting arguments 2 risks/counter-arguments Verdict: Bullish/Bearish/Neutral + justification Sector/Macro Sector overview Macro trends Competitive positioning Catalysts Upcoming events (earnings, launches, regs) Short/long-term catalysts Summary 5-bullet thesis Rec: Buy/Hold/Sell Confidence: High/Med/Low Timeframe (e.g., 6-12 mos) Include weekly perf, news, X sentiment. Flag next-week stocks. Cite data. Buy/sell for next week. Select 5 option trades to max edge w/ constraints (delta [-0.3,+0.3]/$100k NAV, vega>=-0.05/$100k NAV, max 2/GICS). Filters: quote<=10min, POP>=0.65, credit/loss>=0.33, loss<=$500. Rank model_score; tie: momentum_z/flow_z. Table: | Ticker | Strategy | Legs | Thesis (<=30 words) | POP |. If <5: "Fewer than 5 trades meet criteria, do not execute."
+
+
+## Weekly Portfolio Review and Rebalancing
+
+Run on Friday post-market or Saturday. Provide a concise portfolio review in a DataFrame-style view with columns: Ticker, Closing Price, Weekly % Change, Risk. Include: - **Portfolio Performance**: Weekly gain/loss (overall %), Top performer, Bottom performer. - **Specific Stocks**: NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META, BMNR, ADBE. - **Rebalancing Suggestions**: Reduce exposure, Increase exposure, New opportunity (outside list), Seasonality trend. - **$1,000 Scenario**: High Risk and Low Risk tables with Allocation ($), Current Price ($), Number of Shares, Price Target ($), Estimated Profit ($), Profit %, Weight (%), Risk Level. Use finance API for prices, web search for risk factors, X search for sentiment. Keep output concise, citing reliable sources.
+
+## Ad-Hoc Stock Analysis
+
+Create a concise report analyzing a DCA strategy with $1,000 biweekly and $3,500 initial investment over 5 years. Include: 1. **Stock Recommendations**: A table (Ticker, Current Price, Reason, Expectation) with top 3 short-term (1-3 months) and long-term (6+ months) stocks from NVDA, AMD, FBTC, MSTR, COIN, TSLA, PLTR, INTC, MSFT, SOFI, TEM, ENPH, RIVN, SPOT, META, using finance API prices and web/X sentiment as of July 4, 2025. 2. **DCA Growth**: Simulate growth for 1, 3, and 5 years with low (20%), avg (60% short-term, 40% long-term), and high (100% short-term, 60% long-term) YoY returns, including ±5% biweekly variation, using \( FV = P \cdot (1 + r/n)^{nt} + PMT \cdot \frac{(1 + r/n)^{nt} - 1}{r/n} \) (P=$3,500, PMT=$1,000, n=26). 3. **Visualization**: A Chart.js line chart with 33 points (every 4th biweekly period, 0 to 4.9 years) for short-term (20%, 60%, 100%) and long-term (20%, 40%, 60%) scenarios. 4. **Notes**: Key growth factors (AI, crypto, EV, renewables, ads) and risks (tariffs, regulation, inflation). 5. **Conclusion**: Summarize growth potential vs. $133,500 invested, advising market monitoring. Keep it concise, using real-time data where available.
+
+
